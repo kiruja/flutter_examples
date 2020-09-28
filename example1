@@ -1,0 +1,80 @@
+
+
+import 'package:flutter/material.dart';
+
+void main() => runApp(MyApp());
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    
+    AppBar bar = AppBar(
+          title: Text('Welcome to Flutter'),
+        );
+    
+    RaisedButton fb = RaisedButton(
+        color: Colors.blue,
+        textColor: Colors.white,
+        padding: EdgeInsets.all(8.0),
+        splashColor: Colors.blueAccent,
+        onPressed: () {
+          pressFlatButton(context);
+        },
+       child: Text(
+           "Flat Button",
+         style: TextStyle(fontSize: 20.0),),
+       );
+    
+    Text t = Text('Hello World');
+    
+    
+    
+    /**** test ***/
+    
+    Column layout = Column(
+  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+  children: [t,fb],
+);
+    
+    /*** test 2 ***/
+    
+    
+    Center c = Center(
+          child: layout
+        );
+    
+
+    
+  Scaffold s =  Scaffold(
+        appBar: bar,
+        body: c
+        );
+    
+    MaterialApp m = MaterialApp(title: 'Welcome to Flutter',
+      home: s
+      );
+    return m;
+  }
+  
+  
+  void pressFlatButton(context){
+    print("flat button pressed");
+    
+    final snackBar = SnackBar(
+            content: Text('Yay! A SnackBar!'),
+            action: SnackBarAction(
+              label: 'Undo',
+              onPressed: () {
+                // Some code to undo the change.
+              },
+            ),
+          );
+
+          // Find the Scaffold in the widget tree and use
+          // it to show a SnackBar.
+          Scaffold.of(context).showSnackBar(snackBar);
+  }
+
+  
+}
+
